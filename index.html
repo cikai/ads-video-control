@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ads-video-control-sample</title>
+	<link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/5.4.6/video-js.min.css">
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript" src="http://vjs.zencdn.net/5.4.6/video.min.js"></script>
+	<!-- to support IE8 -->
+	<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+</head>
+<body>
+	<div class="video-container">
+		<video id="sample_video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="673" height="378" poster="http://video-js.zencoder.com/oceans-clip.png" data-setup='{"example_option":true}'>
+			<source src="video/sample.mp4" type="video/mp4" />
+			<!-- 
+			<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" />
+			<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />
+		-->
+		<p class="vjs-no-js">请升级您的浏览器以支持HTML5视频播放！</p>
+	</video>
+</div>
+
+<div class="control-btn">
+	<input type="button" name="play" value="播放" onclick="playAd()">
+	<input type="button" name="stop" value="停止" onclick="stopAd()">
+</div>
+
+<script type="text/javascript">
+	function playAd() {
+		var video = videojs("sample_video");
+		video.ready(function(){
+			this.play();
+		});
+	}
+
+	function stopAd() {
+		var video = videojs("sample_video");
+		video.ready(function(){
+			this.pause();
+		});
+	}
+</script>
+</body>
+</html>
