@@ -2,20 +2,28 @@
 <html>
 <head>
 	<title>ads-video-control-sample</title>
-	<link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/5.4.6/video-js.min.css">
+	<link rel="stylesheet" type="text/css" href="css/video-js.min.css">
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
-	<script type="text/javascript" src="http://vjs.zencdn.net/5.4.6/video.min.js"></script>
+	<script type="text/javascript" src="js/video.min.js"></script>
 	<!-- to support IE8 -->
-	<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+	<script src="js/videojs-ie8.min.js"></script>
 </head>
 <body>
+	<div class="video-select">
+		<select id="video-select">
+			<option value="root">请选择视频</option>
+			<option value="sample_1">video sample 1</option>
+			<option value="sample_2">video sample 2</option>
+		</select>
+	</div>
+
 	<div class="video-container">
-		<video id="sample_video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="673" height="378" poster="http://video-js.zencoder.com/oceans-clip.png" data-setup='{"example_option":true}'>
-			<source src="video/sample.mp4" type="video/mp4" />
+		<video id="sample_video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="320" height="240" poster="poster/sample_1.png" data-setup='{"example_option":true}'>
+			<source src="video/sample_1.mp4" type="video/mp4" />
 			<!-- 
 			<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" />
 			<source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />
-		-->
+			-->
 		<p class="vjs-no-js">请升级您的浏览器以支持HTML5视频播放！</p>
 	</video>
 </div>
@@ -25,7 +33,35 @@
 	<input type="button" name="stop" value="停止" onclick="stopAd()">
 </div>
 
+<style type="text/css">
+	.video-select {
+		margin: 20px;
+	}
+
+	.video-select select {
+		font-size: 20px;
+	}
+
+	.video-container {
+		margin: 20px;
+	}
+
+	.control-btn {
+		margin: 20px;
+	}
+
+	.control-btn input {
+		font-size: 20px;
+	}
+</style>
+
 <script type="text/javascript">
+	$(function() {
+		$("#video-select").on("click", function() {
+			console.log(this.value);
+		});
+	});
+
 	function playAd() {
 		var video = videojs("sample_video");
 		video.ready(function(){
